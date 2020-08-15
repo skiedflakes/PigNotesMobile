@@ -1,13 +1,18 @@
 import React,{useState,useRef} from 'react';
-import {StyleSheet,View,Text,Button,Image,TouchableOpacity} from "react-native";
+import {StyleSheet,View,Text,Button,Image,TouchableOpacity,Alert} from "react-native";
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default function LoginScreen ({navigation:{goBack},navigation}) {
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
+
 
   const login = async () => {
     navigation.navigate("Home");
     Alert.alert('go to login');
   }
+
+
 return (
   <View style={styles.container}>
     <Text>LOGIN SCREEN</Text>
