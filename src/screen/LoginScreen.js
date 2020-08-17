@@ -3,16 +3,14 @@ import {StyleSheet,View, Button, Alert,ActivityIndicator,Image,Text,TouchableOpa
 import { TextInput } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
-// import AntDesign from 'react-native-vector-icons/AntDesign';
-
-
+import AntDesign from 'react-native-vector-icons/AntDesign';
 export default function LoginScreen ({navigation}) {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   var [Show_loading,setShow_loading] = useState(false); 
   var [Show_view,setShow_view] = useState(false); 
   var [Login_load,setLogin_load] = useState(false); 
- 
+
   useFocusEffect(
     React.useCallback(() => {
       setUser('');
@@ -93,54 +91,54 @@ export default function LoginScreen ({navigation}) {
     }
   }
   return (
-  <View style={styles.container}>
-    {/* <AntDesign name="stepbackward" size={25} color={"#ffff"} style={{marginLeft:10}}/> */}
+    <View style={styles.container}>
+   <AntDesign name="stepbackward" size={25} color={"#ffff"} style={{marginLeft:10}}/>
       
-    <View style={{width:'75%',marginBottom:60}}>
+      <View style={{width:'75%',marginBottom:60}}>
       <ActivityIndicator size="large" color="#0000ff" animating={Show_loading}/>
       {Show_view && 
-        <View>
-          {/* <Image
-          style={{alignContent:'center',alignSelf:'center',  aspectRatio:0.8, 
-          resizeMode: 'contain',}}
-          source={require('../assets/qr_logo_icon.jpg')}/> */}
-          <TextInput 
-                  autoCompleteType="username"
-                  style={{height:"12%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
-                  placeholder='Username'
-                  onChangeText={text => setUser(text)}
-                  underlineColorAndroid='#FFF'
-                  value={user}
-          />
-          <TextInput 
-            secureTextEntry={true}
-                  style={{height:"12%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
-                  placeholder='Password'
-                  onChangeText={text => setPassword(text)}
-                  underlineColorAndroid='#FFF'
-                  value={password}
-          />
-          {Login_load==true? 
-            <ActivityIndicator style={{ padding:15,}} size="large" color="#0000ff" animating={true}/>: 
-            <TouchableOpacity  onPress={() =>login()}>
-            <Text style={{
-            backgroundColor:"#ffff",
-            color:"#14B6D6",
-            margin:20,
-            padding:15,
-            borderWidth: 1.5,
-            borderColor:"#14B6D6",
-            borderRadius:30,
-            textAlign:'center',
-            fontSize:18,
-            fontWeight:'bold'
-            }}>Login</Text>     
-            </TouchableOpacity> 
-          }
-        </View>
-      }
+      <View>
+     
+        <TextInput 
+                autoCompleteType="username"
+                style={{height:"12%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
+                placeholder='Username'
+                onChangeText={text => setUser(text)}
+                underlineColorAndroid='#FFF'
+                value={user}
+        />
+        <TextInput 
+          secureTextEntry={true}
+                style={{height:"12%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
+                placeholder='Password'
+                onChangeText={text => setPassword(text)}
+                underlineColorAndroid='#FFF'
+                value={password}
+        />
+   
+    {Login_load==true? <ActivityIndicator style={{ padding:15,}} size="large" color="#0000ff" animating={true}/>: 
+    <TouchableOpacity  onPress={() =>login()}>
+    <Text style={{
+    backgroundColor:"#ffff",
+    color:"#14B6D6",
+    margin:20,
+    padding:15,
+    borderWidth: 1.5,
+    borderColor:"#14B6D6",
+    borderRadius:30,
+    textAlign:'center',
+    fontSize:18,
+    fontWeight:'bold'
+    }}>Login</Text>     
+    </TouchableOpacity> 
+    }
+   
+   
+
     </View>
-  </View>
+    }
+    </View>
+    </View>
   )
 }
 
