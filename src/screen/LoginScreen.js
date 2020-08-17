@@ -1,6 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react';
-import {StyleSheet,View, Button, Alert,ActivityIndicator,Image,Text,TouchableOpacity} from "react-native";
-import { TextInput } from 'react-native-gesture-handler';
+import {StyleSheet,View, TextInput,Button, Alert,ActivityIndicator,Image,Text,TouchableOpacity} from "react-native";
 import AsyncStorage from '@react-native-community/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -98,18 +97,21 @@ export default function LoginScreen ({navigation}) {
       <ActivityIndicator size="large" color="#0000ff" animating={Show_loading}/>
       {Show_view && 
       <View>
-     
+        {/* <Image
+        style={{alignContent:'center',alignSelf:'center',  aspectRatio:0.8, 
+        resizeMode: 'contain',}}
+        source={require('../assets/qr_logo_icon.jpg')}/> */}
         <TextInput 
                 autoCompleteType="username"
-                style={{height:"12%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
+                style={{height:"20%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
                 placeholder='Username'
                 onChangeText={text => setUser(text)}
                 underlineColorAndroid='#FFF'
                 value={user}
         />
         <TextInput 
-          secureTextEntry={true}
-                style={{height:"12%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
+          secureTextEntry={true} 
+                style={{height:"20%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
                 placeholder='Password'
                 onChangeText={text => setPassword(text)}
                 underlineColorAndroid='#FFF'
