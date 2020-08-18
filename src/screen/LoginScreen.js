@@ -11,15 +11,14 @@ export default function LoginScreen ({navigation}) {
   var [Login_load,setLogin_load] = useState(false); 
 
   useFocusEffect(
-    React.useCallback(() => {
+  React.useCallback(() => {
       setUser('');
       setPassword('');
       retrieveData();  
       return () => retrieveData();
     }, [Show_view,Show_loading])
   );
-
-    const retrieveData = async () => {
+  const retrieveData = async () => {
       try {
        const valueString = await AsyncStorage.getItem('user_details');
        const value = JSON.parse(valueString);
@@ -36,7 +35,6 @@ export default function LoginScreen ({navigation}) {
        console.log(error);
       }
      };
-
   const setItemStorage = async (key,value) => {
     try {
       await AsyncStorage.setItem(key, JSON.stringify(value));
@@ -44,7 +42,6 @@ export default function LoginScreen ({navigation}) {
       // Error saving data
     }
   };
-
   const login = async () => {
     if(!user){
       Alert.alert('Please enter username');
@@ -57,7 +54,7 @@ export default function LoginScreen ({navigation}) {
       formData.append('username', user);
       formData.append('password', password);
 
-      fetch(global.global_url+'login_verifier.php', {
+      fetch(global.global_url+'login.php', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -89,6 +86,7 @@ export default function LoginScreen ({navigation}) {
         });
     }
   }
+
   return (
     <View style={styles.container}>
    <AntDesign name="stepbackward" size={25} color={"#ffff"} style={{marginLeft:10}}/>
@@ -97,10 +95,6 @@ export default function LoginScreen ({navigation}) {
       <ActivityIndicator size="large" color="#0000ff" animating={Show_loading}/>
       {Show_view && 
       <View>
-        {/* <Image
-        style={{alignContent:'center',alignSelf:'center',  aspectRatio:0.8, 
-        resizeMode: 'contain',}}
-        source={require('../assets/qr_logo_icon.jpg')}/> */}
         <TextInput 
                 autoCompleteType="username"
                 style={{height:"20%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
@@ -134,9 +128,6 @@ export default function LoginScreen ({navigation}) {
     }}>Login</Text>     
     </TouchableOpacity> 
     }
-   
-   
-
     </View>
     }
     </View>
