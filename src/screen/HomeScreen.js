@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const mydata = [
 {
     id:"1",
@@ -32,11 +32,15 @@ const FlatListItemSeparator = () => {
     );
   }
 
-export default function HomeScreen ({route,navigation,body_content}) {
+export default function HomeScreen ({navigation:{goBack},navigation}) {
   const [menu_list, setMenu_list] = React.useState(null);
   var [content, setcontent] = React.useState(null);
 
-
+  const logout = () =>{
+    goBack();
+    AsyncStorage.clear();
+    Alert.alert('offline storage cleared');
+  }
 
   useFocusEffect(
     React.useCallback(() => {
@@ -52,6 +56,10 @@ export default function HomeScreen ({route,navigation,body_content}) {
 
     <View style={{ flex:6,  flexDirection: 'row', padding:2,}} >
       <Text style={{color:'#ffff',alignSelf:'center',marginLeft:20,fontSize:20}}>PigNotes Mobile</Text>
+      <TouchableOpacity style={{flex:5.5,flexDirection:'row-reverse',}} onPress={() =>logout()}>
+      <MaterialCommunityIcons  name="logout" size={25} color={"#ffff"} style={{alignContent:'center',alignSelf:'center', color:'#ffff',padding:10}}/>
+      <Text style={{alignContent:'center',alignSelf:'center', color:'#ffff'}} onPress={() =>logout()}>Logout</Text>
+      </TouchableOpacity>
     </View>
     </View>
     <View style={styles.body}>
