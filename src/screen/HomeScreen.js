@@ -8,14 +8,46 @@ import { useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 const mydata = [
-{
+  {
     id:"1",
-    name:"Feeding",
-},
-{
+    name:"Abort",
+  },
+  {
     id:"2",
-    name:"Culling",
-},
+    name:"Adopt",
+  },
+  {
+    id:"3",
+    name:"AI Breeding",
+  },
+  {
+    id:"4",
+    name:"Confirm Pregnant",
+  },
+  {
+    id:"5",
+    name:"Farrow",
+  },
+  {
+    id:"6",
+    name:"Natural Breeding",
+  },
+  {
+    id:"7",
+    name:"Not in Pig",
+  },
+  {
+    id:"8",
+    name:"Rebred",
+  },
+  {
+    id:"9",
+    name:"Ultrasound",
+  },
+  {
+    id:"10",
+    name:"Wean",
+  }
 
 ];
 
@@ -105,10 +137,10 @@ function RowItem ({navigation,title,id}) {
 function getContent(navigation,name,id){
     if(id==1){ // load Category
             // navigation.navigate("Category");+
-        Alert.alert("Go to Feeding Navigation");
+        Alert.alert("Go to Abort Navigation");
     }else if(id==2){ // load items
         // navigation.navigate("Product Entry");
-        Alert.alert("Go to Culling Navigation");
+        Alert.alert("Go to Adopt Navigation");
     }else if(id==3){ // load sides
         // navigation.navigate("Sides");
     }else if(id==4){ // load sides
