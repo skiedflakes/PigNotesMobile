@@ -65,8 +65,9 @@ export default function LoginScreen ({navigation}) {
       }).then((response) => response.json())
         .then((responseJson) => {
           setLogin_load(false);
+          
           var save_response_data = responseJson.response_[0];
-
+          
           if(save_response_data.status == '1'){
             setItemStorage('user_details',{'user_details':1,'user_id':save_response_data.user_id,
             'company_code': save_response_data.company_code,
@@ -82,7 +83,7 @@ export default function LoginScreen ({navigation}) {
         }).catch((error) => {
           setLogin_load(false);
           console.error(error);
-          Alert.alert('Internet Connection Error');
+          Alert.alert('Internet Connection Error. ' + error);
         });
     }
   }
