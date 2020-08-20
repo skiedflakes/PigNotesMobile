@@ -135,16 +135,26 @@ function RowItem ({navigation,title,id}) {
 }
 
 function getContent(navigation,name,id){
-    if(id==1){ // load Category
-            // navigation.navigate("Category");+
-        Alert.alert("Go to Abort Navigation");
-    }else if(id==2){ // load items
-        // navigation.navigate("Product Entry");
-        Alert.alert("Go to Adopt Navigation");
-    }else if(id==3){ // load sides
-        // navigation.navigate("Sides");
-    }else if(id==4){ // load sides
-      // navigation.navigate("Size");
+  if(id==1){ // load Abort
+    navigation.navigate("Abort");
+  }else if(id==2){ // load items
+    navigation.navigate("Adopt");
+  }else if(id==3){ // load sides
+    navigation.navigate("AI Breeding");
+  }else if(id==4){ // load sides
+    navigation.navigate("Confirm Pregnant");
+  }else if(id==5){ // load sides
+    navigation.navigate("Farrow");
+  }else if(id==6){ // load sides
+    navigation.navigate("Natural Breeding");
+  }else if(id==7){ // load sides
+    navigation.navigate("Not in Pig");
+  }else if(id==8){ // load sides
+    navigation.navigate("Rebred");
+  }else if(id==9){ // load sides
+    navigation.navigate("Ultrasound");
+  }else if(id==10){ // load sides
+    navigation.navigate("Wean");
   }
 }
 
