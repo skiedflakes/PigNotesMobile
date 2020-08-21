@@ -105,9 +105,18 @@ export default function LoginScreen ({navigation}) {
       <ActivityIndicator size="large" color="#0000ff" animating={Show_loading}/>
       {Show_view && 
       <View>
+       <Text style={{
+    backgroundColor:"#ffff",
+    color:"#00a65a",
+    margin:20,
+    padding:15,
+    textAlign:'center',
+    fontSize:18,
+    fontWeight:'bold'
+    }}>PigNotes</Text>     
         <TextInput 
                 autoCompleteType="username"
-                style={{height:"20%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
+                style={{height:"15%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
                 placeholder='Username'
                 onChangeText={text => setUser(text)}
                 underlineColorAndroid='#FFF'
@@ -115,22 +124,22 @@ export default function LoginScreen ({navigation}) {
         />
         <TextInput 
           secureTextEntry={true} 
-                style={{height:"20%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
+                style={{height:"15%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
                 placeholder='Password'
                 onChangeText={text => setPassword(text)}
                 underlineColorAndroid='#FFF'
                 value={password}
         />
    
-    {Login_load==true? <ActivityIndicator style={{ padding:15,}} size="large" color="#0000ff" animating={true}/>: 
+    {Login_load==true? <ActivityIndicator style={{ padding:15,}} size="large" color="#00a65a" animating={true}/>: 
     <TouchableOpacity  onPress={() =>login()}>
     <Text style={{
     backgroundColor:"#ffff",
-    color:"#14B6D6",
+    color:"#00a65a",
     margin:20,
     padding:15,
     borderWidth: 1.5,
-    borderColor:"#14B6D6",
+    borderColor:"#00a65a",
     borderRadius:30,
     textAlign:'center',
     fontSize:18,

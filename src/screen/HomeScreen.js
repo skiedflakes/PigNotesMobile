@@ -128,7 +128,7 @@ function RowItem ({navigation,title,id}) {
             <View style={{flex:3,flexDirection:'row',alignItems:"center"}}>
               <Text style={styles.title}>{title}</Text>
             </View>
-            <MaterialIcons style={{alignSelf:'center'}} name="keyboard-arrow-right" size={25} color={"#393737"}/>
+            <MaterialIcons style={{alignSelf:'center'}} name="keyboard-arrow-right" size={25} color={"#00a65a"}/>
           </View>
       </TouchableOpacity>
   );
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
         flexDirection:'row-reverse',
         padding:2,
         flex:0.6,
-        backgroundColor: '#3490DD',
+        backgroundColor: '#00a65a',
         alignContent:"center",
     },
     body:{
