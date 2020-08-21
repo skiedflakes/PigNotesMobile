@@ -49,42 +49,51 @@ export default function LoginScreen ({navigation}) {
       Alert.alert('Please enter password');
     } else {
       setLogin_load(true);
-  
-      const formData = new FormData();
-      formData.append('username', user);
-      formData.append('password', password);
+      setLogin_load(false);
+       
+      setItemStorage('user_details',{'user_details':1,'user_id':'save_response_data.user_id',
+      'company_code': 'save_response_data.company_code',
+      'company_id':' save_response_data.company_id',
+      'user_code': 'save_response_data.user_code',
+      'category_id': 'save_response_data.category_id',
+      'company_name': 'save_response_data.company_name',
+      'user_name': 'save_response_data.user_name'})
+      navigation.navigate("Home");
 
-      fetch(global.global_url+'login.php', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'multipart/form-data'
-        },
-        body: formData
+      // const formData = new FormData();
+      // formData.append('username', user);
+      // formData.append('password', password);
 
-      }).then((response) => response.json())
-        .then((responseJson) => {
-          setLogin_load(false);
-          
-          var save_response_data = responseJson.response_[0];
-          
-          if(save_response_data.status == '1'){
-            setItemStorage('user_details',{'user_details':1,'user_id':save_response_data.user_id,
-            'company_code': save_response_data.company_code,
-            'company_id': save_response_data.company_id,
-            'user_code': save_response_data.user_code,
-            'category_id': save_response_data.category_id,
-            'company_name': save_response_data.company_name,
-            'user_name': save_response_data.user_name})
-            navigation.navigate("Home");
-          } else {
-            Alert.alert('User not found');
-          }
-        }).catch((error) => {
-          setLogin_load(false);
-          console.error(error);
-          Alert.alert('Internet Connection Error. ' + error);
-        });
+      // fetch(global.global_url+'login.php', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Accept': 'application/json',
+      //     'Content-Type': 'multipart/form-data'
+      //   },
+      //   body: formData
+
+      // }).then((response) => response.json())
+      //   .then((responseJson) => {
+      //     setLogin_load(false);
+      //     var save_response_data = responseJson.response_[0];
+
+      //     if(save_response_data.status == '1'){
+      //       setItemStorage('user_details',{'user_details':1,'user_id':save_response_data.user_id,
+      //       'company_code': save_response_data.company_code,
+      //       'company_id': save_response_data.company_id,
+      //       'user_code': save_response_data.user_code,
+      //       'category_id': save_response_data.category_id,
+      //       'company_name': save_response_data.company_name,
+      //       'user_name': save_response_data.user_name})
+      //       navigation.navigate("Home");
+      //     } else {
+      //       Alert.alert('User not found');
+      //     }
+      //   }).catch((error) => {
+      //     setLogin_load(false);
+      //     console.error(error);
+      //     Alert.alert('Internet Connection Error');
+      //   });
     }
   }
 
