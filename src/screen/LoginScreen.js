@@ -1,8 +1,9 @@
 import React,{useState,useEffect,useRef} from 'react';
-import {StyleSheet,View, TextInput,Button, Alert,ActivityIndicator,Image,Text,TouchableOpacity} from "react-native";
+import {StyleSheet,View, Alert,ActivityIndicator,Image,Text,TouchableOpacity} from "react-native";
 import AsyncStorage from '@react-native-community/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { Provider as PaperProvider, TextInput,Button} from 'react-native-paper';
 export default function LoginScreen ({navigation}) {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
@@ -98,8 +99,9 @@ export default function LoginScreen ({navigation}) {
   }
 
   return (
+    <PaperProvider>
     <View style={styles.container}>
-   <AntDesign name="stepbackward" size={25} color={"#ffff"} style={{marginLeft:10}}/>
+      <AntDesign name="stepbackward" size={25} color={"#ffff"} style={{marginLeft:10}}/>
       
       <View style={{width:'75%',marginBottom:60}}>
       <ActivityIndicator size="large" color="#0000ff" animating={Show_loading}/>
@@ -114,21 +116,19 @@ export default function LoginScreen ({navigation}) {
     fontSize:18,
     fontWeight:'bold'
     }}>PigNotes</Text>     
-        <TextInput 
-                autoCompleteType="username"
-                style={{height:"15%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
-                placeholder='Username'
-                onChangeText={text => setUser(text)}
-                underlineColorAndroid='#FFF'
-                value={user}
+        <TextInput
+          label="Username"
+          type="outlined"
+          onChangeText={text => setUser(text)}
+          value={user}
+          style={{marginBottom:20}}
         />
-        <TextInput 
+        <TextInput
+          label="Password"
+          type="outlined"
           secureTextEntry={true} 
-                style={{height:"15%",margin:10,borderColor: 'gray',borderWidth: 0.5,borderRadius:10,paddingLeft:20}}
-                placeholder='Password'
-                onChangeText={text => setPassword(text)}
-                underlineColorAndroid='#FFF'
-                value={password}
+          onChangeText={text => setPassword(text)}
+          value={password}
         />
    
     {Login_load==true? <ActivityIndicator style={{ padding:15,}} size="large" color="#00a65a" animating={true}/>: 
@@ -136,7 +136,7 @@ export default function LoginScreen ({navigation}) {
     <Text style={{
     backgroundColor:"#ffff",
     color:"#00a65a",
-    margin:20,
+    marginTop:20,
     padding:15,
     borderWidth: 1.5,
     borderColor:"#00a65a",
@@ -145,12 +145,14 @@ export default function LoginScreen ({navigation}) {
     fontSize:18,
     fontWeight:'bold'
     }}>Login</Text>     
-    </TouchableOpacity> 
+    </TouchableOpacity>
+    
     }
     </View>
     }
     </View>
     </View>
+    </PaperProvider>
   )
 }
 
